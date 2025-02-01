@@ -45,8 +45,9 @@ app.use("/admin/transaction", transactionAdminRouter);
 mongoose
   .connect(uri)
   .then(() => {
-    app.listen(process.env.PORT_DEFAULT || 3000, () => {
-      console.log("listening on port " + process.env.PORT_DEFAULT || 3000);
+    const PORT = process.env.PORT || 5100; // Sử dụng PORT từ môi trường, nếu không có thì mặc định là 5100
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
     });
   })
   .catch((err) => {
